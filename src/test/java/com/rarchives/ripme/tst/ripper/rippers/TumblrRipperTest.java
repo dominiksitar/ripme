@@ -24,4 +24,14 @@ public class TumblrRipperTest extends RippersTest {
         TumblrRipper ripper = new TumblrRipper(new URL("https://these-are-my-b-sides.tumblr.com/post/178225921524/this-was-fun"));
         testRipper(ripper);
     }
+
+    public void testSanitizeURL() throws IOException{
+        TumblrRipper ripper = new TumblrRipper(new URL("https://nixcraft.tumblr.com/"));
+        assertEquals(ripper.sanitizeURL(ripper.getURL()),"https://nixcraft.tumblr.com/");
+    }
+
+    public void testSanitizeURLWithBadURL() throws IOException{
+        TumblrRipper ripper = new TumblrRipper(new URL("https://nixcraft.something.tumblr.com/"));
+        assertEquals(ripper.sanitizeURL(ripper.getURL()), "https://nixcraft.something/");
+    }
 }

@@ -1,6 +1,7 @@
 package com.rarchives.ripme.tst.ripper.rippers;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,5 +38,10 @@ public class InstagramRipperTest extends RippersTest {
             InstagramRipper ripper = new InstagramRipper(url);
             testRipper(ripper);
         }
+    }
+
+    public void testSanitizeURL() throws IOException {
+        InstagramRipper ripper = new InstagramRipper(new URL("https://www.instagram.com/p/BZ4egP7njW5/?hl=en"));
+        assertEquals( "https://www.instagram.com/p/BZ4egP7njW5/", ripper.sanitizeURL(ripper.getURL()));
     }
 }

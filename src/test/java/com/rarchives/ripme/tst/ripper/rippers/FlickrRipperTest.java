@@ -13,4 +13,7 @@ public class FlickrRipperTest extends RippersTest {
         testRipper(ripper);
     }
     */
+    public void testSanitizeURL(){
+
+    }
 }
